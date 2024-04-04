@@ -34,7 +34,7 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
   app.options('*', cors());
 
-  app.use(express.static(path.join(__dirname, '../Client/build')));
+  app.use(express.static(path.join(__dirname, '../client/build')));
  
 //For userRoutes
 const UserRoute = require('./Route/routes');
@@ -43,7 +43,7 @@ app.use('/api', UserRoute);
 app.use('/api/transaction/', require('./Route/transactionRoute'))
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../Client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 const port = process.env.PORT || 3000; // Set default port to 3000 if PORT is not specified in .env
 
